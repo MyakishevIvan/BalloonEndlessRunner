@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6700b5a9f394d61b04fc6d2726f92ed, type: 3}
+  m_Name: ConfigStorage
+  m_EditorClassIdentifier: 
+  obstaclePrefab: {fileID: 1529131654761509842, guid: e86ec488c17124f4b9488f0f71ac899f, type: 3}
+  obstaclesConfig:
+  - gameLevelType: 0
+    sprites:
+    - {fileID: 21300000, guid: c745ebc26477028499f17af183d5e63e, type: 3}
+    - {fileID: 21300000, guid: 4073a26086d88b545a2e861c9f01f213, type: 3}
+    - {fileID: 21300000, guid: d2560f4e2063a5649976749d3aaf6467, type: 3}
+    - {fileID: 21300000, guid: fb28fe0dcc161d346a543950febfbfd8, type: 3}
+    - {fileID: 21300000, guid: 4df7a7d7383a45f43833b1bfc86a735e, type: 3}
+  - gameLevelType: 1
+    sprites:
+    - {fileID: 21300000, guid: be03020df4bdd02448378ff767304fc0, type: 3}
+    - {fileID: 21300000, guid: 9a80a8cbf1f827745837882dbe177324, type: 3}
+    - {fileID: 21300000, guid: be1ab48a871d16b439dbcc51fd631445, type: 3}
+  - gameLevelType: 2
+    sprites:
+    - {fileID: 21300000, guid: d38f53b5066a8334fb95650f69fe4010, type: 3}
+    - {fileID: 21300000, guid: d11e08ede314f4a47ad68ac11a0e2c95, type: 3}
+    - {fileID: 21300000, guid: 6e13d58ee7e8fc140a4f09fb803e1d41, type: 3}
+  - gameLevelType: 3
+    sprites:
+    - {fileID: 21300000, guid: a926d7d3f7ad91e469ecc0177be1cbe1, type: 3}
+    - {fileID: 21300000, guid: 5914eef70be21e340af2864d2509ea4e, type: 3}
+    - {fileID: 21300000, guid: 62d78d331075c744f8314ece69d9b23f, type: 3}
+    - {fileID: 21300000, guid: f34167a1c7ae0504d9f542800b543c71, type: 3}
+  obstacleSpeed: 8
+  changeLineDuration: 1
+  moveBackgroundDuration: 40
+  reloadGameTime: 3
