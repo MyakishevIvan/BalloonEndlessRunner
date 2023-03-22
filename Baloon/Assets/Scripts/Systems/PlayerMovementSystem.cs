@@ -11,12 +11,12 @@ using Zenject;
 
 namespace BalloonEndlessRunner.Systems
 {
-    sealed class PlayerMovementSystem : IEcsRunSystem, IEcsInitSystem
+    public class PlayerMovementSystem : IEcsRunSystem, IEcsInitSystem
     {
         [Inject] private SignalBus _signalBus;
+        [Inject] private ConfigStorage _configStorage;
+        [Inject] private BackGroundLineData _backGroundLineData;
         private readonly EcsFilter<PlayerTag, ModelComponent, MovableComponent, DirectionComponent> _filter;
-        private readonly BackGroundLineData _backGroundLineData;
-        private readonly ConfigStorage _configStorage;
         private readonly EcsFilter<EndGameEvent> _endGameFilter;
         private bool _canMove = true;
 
@@ -69,7 +69,7 @@ namespace BalloonEndlessRunner.Systems
 
         private float GetTargetPosition(int lineIndex)
         {
-            return _backGroundLineData.lines[lineIndex];
+            return _backGroundLineData.Lines[lineIndex];
         }
     }
 }

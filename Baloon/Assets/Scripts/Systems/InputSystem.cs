@@ -7,32 +7,31 @@ using UnityEngine;
 
 namespace BalloonEndlessRunner.Systems
 {
-    sealed class InputSystem : IEcsRunSystem
+    public class InputSystem : IEcsRunSystem
     {
         private readonly EcsFilter<PlayerTag, DirectionComponent> directionFilter = null;
         private bool _isDragging;
         private bool _isMobilePlatform;
-        private float _minSwipeDelta = 2f;
+        private float _minSwipeDelta = 5f;
         private Vector2 _swipeDelta;
         private Vector2 _tapPoint;
-        public event Action<SwipeType> SwipeEvent;
         private SwipeType _currentSwipe;
-        
+
         public void Run()
         {
             DetectSwipe();
             CalculateSwipe();
-            
+
             foreach (var i in directionFilter)
             {
                 ref var directionComponent = ref directionFilter.Get2(i);
                 directionComponent.SwipeType = _currentSwipe;
             }
-            
-            if(_currentSwipe != SwipeType.None)
+
+            if (_currentSwipe != SwipeType.None)
                 ResetSwipe();
         }
-        
+
         private void DetectSwipe()
         {
             if (!_isMobilePlatform)
@@ -72,12 +71,9 @@ namespace BalloonEndlessRunner.Systems
                     _swipeDelta = (Vector2)Input.mousePosition - _tapPoint;
                 else if (Input.touchCount > 0)
                     _swipeDelta = Input.touches[0].position - _tapPoint;
-                
+
                 if (_swipeDelta.magnitude > _minSwipeDelta)
-                {
                     _currentSwipe = _swipeDelta.x > 0 ? SwipeType.Right : SwipeType.Left;
-                    SwipeEvent?.Invoke(_currentSwipe);
-                }
             }
         }
 

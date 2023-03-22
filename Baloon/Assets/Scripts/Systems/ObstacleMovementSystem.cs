@@ -3,6 +3,7 @@ using BalloonEndlessRunner.Configs;
 using BalloonEndlessRunner.Tags;
 using Leopotam.Ecs;
 using UnityEngine;
+using Zenject;
 
 namespace BalloonEndlessRunner.Systems
 {
@@ -10,8 +11,7 @@ namespace BalloonEndlessRunner.Systems
     {
         private readonly EcsFilter<ObstacleTag, SpawnedComponent, ModelComponent> _filter = null;
         private readonly EcsFilter<EndGameEvent> _endGameFilter;
-
-        private ConfigStorage _configStorage;
+        [Inject] private ConfigStorage _configStorage;
         
         public void Run()
         {

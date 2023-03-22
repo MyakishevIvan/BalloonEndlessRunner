@@ -11,7 +11,7 @@ namespace BalloonEndlessRunner.Systems
     public class ObstacleDespawnSystem : IEcsRunSystem, IEcsInitSystem
     {
         [Inject] private SignalBus _signalBus;
-        private readonly ScreenBorderData _screenBorderData;
+        [Inject] private readonly ScreenBorderData _screenBorderData;
         private readonly EcsFilter<ObstacleTag, SpawnedComponent, ModelComponent> _filter = null;
         
         public void Init()

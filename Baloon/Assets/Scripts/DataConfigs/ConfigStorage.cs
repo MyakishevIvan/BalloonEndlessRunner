@@ -23,7 +23,6 @@ namespace BalloonEndlessRunner.Configs
         public int ChangeLineDuration => changeLineDuration;
         public int MoveBackgroundDuration => moveBackgroundDuration;
         public int ReloadGameTime => reloadGameTime;
-        
 
         public Sprite GetObstacleSprite(GameLevelType gameLevelType)
         {

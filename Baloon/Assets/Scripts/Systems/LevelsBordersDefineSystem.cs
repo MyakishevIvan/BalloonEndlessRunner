@@ -4,15 +4,14 @@ using BalloonEndlessRunner.Data;
 using BalloonEndlessRunner.Enums;
 using BalloonEndlessRunner.Tags;
 using Leopotam.Ecs;
+using Zenject;
 
 namespace BalloonEndlessRunner.Systems
 {
-    public class GameLevelDefineSystem : IEcsPreInitSystem, IEcsRunSystem
+    public class LevelsBordersDefineSystem : IEcsPreInitSystem
     {
+        [Inject] private  GameLevelData _gameLevelData;
         private readonly EcsFilter<LevelBordersComponent> _levelBorderFilter;
-        private readonly GameLevelData _gameLevelData;
-        private readonly EcsFilter<PlayerTag, ModelComponent> _playerFilter;
-        private GameLevelBorder[] _gameBorders;
 
         public void PreInit()
         {
@@ -23,29 +22,13 @@ namespace BalloonEndlessRunner.Systems
             if (borderCount != levelCount)
                 throw new Exception("Levels border and game levels doesn't equal");
 
-            _gameBorders = new GameLevelBorder[levelCount];
+            _gameLevelData.LevelsBorders = new GameLevelData.Border[levelCount];
             for (int i = 0, j = 0; i < levelCount; i++, j++)
             {
                 var startLevelBorder = levelBorders.levelsBorders[j];
                 var endLevelBorder = levelBorders.levelsBorders[j + 1];
-                _gameBorders[i] = new GameLevelBorder(startLevelBorder, endLevelBorder, (GameLevelType)i);
+                _gameLevelData[i] = new GameLevelData.Border(startLevelBorder, endLevelBorder, (GameLevelType)i);
             }
-        }
-
-        public void Run()
-        {
-            var playerYPos = _playerFilter.Get2(0).modelTransform.position.y;
-
-            for (int i = 0; i < _gameBorders.Length; i++)
-            {
-                if (_gameBorders[i].IsInclude(playerYPos, out var result))
-                {
-                    _gameLevelData.GameLevelType = result;
-                    return;
-                }
-            }
-
-            throw new Exception("Can't define level");
         }
     }
 }

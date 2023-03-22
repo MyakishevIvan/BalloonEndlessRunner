@@ -8,23 +8,23 @@ namespace BalloonEndlessRunner.Data
     {
         private Camera _camera;
         private float _offset;
-        private Transform transform;
+        private Transform _transform;
 
         public void Initialize()
         {
             _camera = Camera.main;
-            transform = _camera.transform;
+            _transform = _camera.transform;
             _offset = _camera.orthographicSize * 1.25f;
         }
         
         public float DespawnBorder()
         {
-            return transform.position.y - _offset;
+            return _transform.position.y - _offset;
         }
 
         public float SpawnBorder()
         {
-            return transform.position.y + _offset;
+            return _transform.position.y + _offset;
         }
         
         public float Height()

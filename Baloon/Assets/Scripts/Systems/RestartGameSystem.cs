@@ -10,9 +10,9 @@ namespace BalloonEndlessRunner.Systems
     public class RestartGameSystem : IEcsRunSystem
     {
         [Inject] private SignalBus _signalBus;
+        [Inject] private readonly ConfigStorage _configStorage;
         private readonly EcsWorld _ecsWorld;
         private readonly EcsFilter<EndGameEvent> _endGameFilter;
-        private readonly ConfigStorage _configStorage;
         private float _currentTime;
 
         public void Run()

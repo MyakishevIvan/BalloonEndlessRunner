@@ -4,6 +4,6 @@ namespace BalloonEndlessRunner.Data
 {
     public class BackGroundLineData
     {
-        public Vector3 lines;
+        public Vector3 Lines;
     }
 }
